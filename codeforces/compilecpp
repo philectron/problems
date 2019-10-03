@@ -1,0 +1,27 @@
+#!/bin/bash
+
+CXX='g++'
+CXXFLAGS='-static -DONLINE_JUDGE -O2 -std=c++17'
+
+exe() {
+  echo "$@"
+  "$@"
+}
+
+compile() {
+  for program in "$@"; do
+    exe ${CXX} ${CXXFLAGS} ${program}/*.cpp -o ${program}/${program}.exe
+  done
+}
+
+if [[ "$#" -eq 0 ]]; then
+  for directory in */; do
+    compile ${directory%/}
+  done
+elif [[ "$#" -eq 1 ]] && [[ "$1" == 'clean' ]]; then
+  for directory in */; do
+    exe rm -f ${directory%/}/${directory%/}.exe
+  done
+else
+  compile "${@:1}"
+fi
