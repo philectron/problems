@@ -28,34 +28,23 @@ int main() {
     for (int i = 1, j = 0; i < n / 2 + 1; i++) {
         j = n - i - 1;
 
-        cerr << "i = " << i << ", j = " << j << endl;
-        cerr << "occupied[i] = " << occupied[i] << endl;
         if (!done[i]) {
             done[i] = true;
-            if (occupied[i - 1] < tree[i].first &&
-                tree[i].first - tree[i].second > tree[i - 1].first) {
-                cerr << "Fall left on i = " << i << endl;
+            if (tree[i].first - tree[i].second > max(tree[i - 1].first, occupied[i - 1])) {
                 sum++;
                 occupied[i] = tree[i].first - tree[i].second;
-            } else if (occupied[i + 1] > tree[i].first &&
-                       tree[i].first + tree[i].second < tree[i + 1].first) {
-                cerr << "Fall right on i = " << i << endl;
+            } else if (tree[i].first + tree[i].second < min(tree[i + 1].first, occupied[i + 1])) {
                 sum++;
                 occupied[i] = tree[i].first + tree[i].second;
             }
         }
 
-        cerr << "occupied[j] = " << occupied[j] << endl;
         if (!done[j]) {
             done[j] = true;
-            if (occupied[j + 1] > tree[j].first &&
-                tree[j].first + tree[j].second < tree[j + 1].first) {
-                cerr << "Fall left on j = " << j << endl;
+            if (tree[j].first + tree[j].second < min(tree[j + 1].first, occupied[j + 1])) {
                 sum++;
                 occupied[j] = tree[j].first + tree[j].second;
-            } else if (occupied[j - 1] < tree[j].first &&
-                       tree[j].first - tree[j].second > tree[j - 1].first) {
-                cerr << "Fall right on j = " << j << endl;
+            } else if (tree[j].first - tree[j].second > max(tree[j - 1].first, occupied[j - 1])) {
                 sum++;
                 occupied[j] = tree[j].first - tree[j].second;
             }
