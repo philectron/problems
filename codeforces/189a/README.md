@@ -1,4 +1,4 @@
-# Codeforces - 189a
+# Codeforces - 189a - Cut Ribbon
 
 ## Problem Statement
 

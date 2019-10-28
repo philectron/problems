@@ -1,4 +1,4 @@
-# Codeforces - 50a
+# Codeforces - 50a - Domino Pulling
 
 ## Problem Statement
 
