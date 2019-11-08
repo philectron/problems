@@ -3,9 +3,7 @@ from queue import *
 class Graph:
     def __init__(self, V):
         self.V = V
-        self.adj = []
-        for i in range(V):
-            self.adj.append([])
+        self.adj = [[] for i in range(V)]
 
     def add_edge(self, v, w):
         self.adj[v].append(w)
@@ -15,7 +13,7 @@ class Graph:
         self.adj[w].append(v)
 
     def bfs(self, start):
-        visited = [False] * self.V
+        visited = [False for i in range(self.V)]
         bfs = Queue(maxsize=self.V)
 
         visited[start] = True

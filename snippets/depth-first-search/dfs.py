@@ -1,9 +1,7 @@
 class Graph:
     def __init__(self, V):
         self.V = V
-        self.adj = []
-        for i in range(V):
-            self.adj.append([])
+        self.adj = [[] for i in range(V)]
 
     def add_edge(self, v, w):
         self.adj[v].append(w)
@@ -13,7 +11,7 @@ class Graph:
         self.adj[w].append(v)
 
     def dfs(self, start):
-        visited = [False] * self.V
+        visited = [False for i in range(self.V)]
         dfs = []
 
         dfs.append(start)
@@ -32,9 +30,8 @@ class Graph:
         print()
 
     def dfs_recur(self, start):
-        visited = [False] * self.V
+        visited = [False for i in range(self.V)]
         self.dfs_util(start, visited)
-
         print()
 
     def dfs_util(self, v, visited):
@@ -45,15 +42,3 @@ class Graph:
         for u in self.adj[v]:
             if not visited[u]:
                 self.dfs_util(u, visited)
-
-
-g = Graph(6)
-g.add_edge(0, 1)
-g.add_edge(0, 2)
-g.add_edge(1, 2)
-g.add_edge(2, 0)
-g.add_edge(2, 3)
-g.add_edge(3, 3)
-
-g.dfs(2)
-g.dfs_recur(2)
