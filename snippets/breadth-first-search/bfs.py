@@ -1,32 +1,32 @@
 from queue import *
 
-class Graph:
+class Graph(object):
     def __init__(self, V):
         self.V = V
         self.adj = [[] for i in range(V)]
 
-    def add_edge(self, v, w):
-        self.adj[v].append(w)
+    def add_edge(self, src, dest):
+        self.adj[src].append(dest)
 
-    def add_bi_edge(self, v, w):
-        self.adj[v].append(w)
-        self.adj[w].append(v)
+    def add_bi_edge(self, u, v):
+        self.add_edge(u, v)
+        self.add_edge(v, u)
 
-    def bfs(self, start):
+    def bfs(self, src):
         visited = [False for i in range(self.V)]
         bfs = Queue(maxsize=self.V)
 
-        visited[start] = True
-        bfs.put(start)
+        visited[src] = True
+        bfs.put(src)
 
         while not bfs.empty():
             v = bfs.get()
 
-            print(v, end=' ')
+            print(v, end=' ')  ###
 
             for u in self.adj[v]:
                 if not visited[u]:
                     visited[u] = True
                     bfs.put(u)
 
-        print()
+        print()  ###

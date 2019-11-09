@@ -12,27 +12,27 @@ public:
         adj.resize(V);
     }
 
-    void AddEdge(int v, int w) {
-        adj[v].push_back(w);
+    void AddEdge(int src, int dest) {
+        adj[src].push_back(dest);
     }
 
-    void AddBiEdge(int v, int w) {
-        adj[v].push_back(w);
-        adj[w].push_back(v);
+    void AddBiEdge(int u, int v) {
+        AddEdge(u, v);
+        AddEdge(v, u);
     }
 
-    void Bfs(int start) {
+    void Bfs(int src) {
         vector<bool> visited(V, false);
         queue<int> bfs;
 
-        visited[start] = true;
-        bfs.push(start);
+        visited[src] = true;
+        bfs.push(src);
 
         while (!bfs.empty()) {
             int v = bfs.front();
             bfs.pop();
 
-            cout << v << ' ';
+            cout << v << ' ';  ///
 
             for (const auto& u : adj[v]) {
                 if (!visited[u]) {
@@ -42,6 +42,6 @@ public:
             }
         }
 
-        cout << endl;
+        cout << endl;  ///
     }
 };
