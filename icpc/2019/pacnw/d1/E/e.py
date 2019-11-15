@@ -1,4 +1,6 @@
-s = input()
+from sys import *
+
+s = stdin.readline().rstrip()
 freq = {}
 
 for c in s:
@@ -11,4 +13,4 @@ total = 1
 for c in freq.keys():
     total *= freq[c] + 1
 
-print(total % 11092019)
+stdout.write(str(total % 11092019) + '\n')
