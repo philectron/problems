@@ -8,7 +8,7 @@
 
 [#63643529](https://codeforces.com/contest/545/submission/63643529) :heavy_check_mark:
 
-[#63642860](https://codeforces.com/contest/545/submission/63642860) :x: (Wrong answer on test 5)
+[#63642860](https://codeforces.com/contest/545/submission/63642860) :x:
 
-[#63641806](https://codeforces.com/contest/545/submission/63641806) :x: (Wrong answer on test 3)
+[#63641806](https://codeforces.com/contest/545/submission/63641806) :x:
 

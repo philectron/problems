@@ -10,4 +10,4 @@
 
 [#61752562](https://codeforces.com/contest/50/submission/61752562) :heavy_check_mark:
 
-[#61752143](https://codeforces.com/contest/50/submission/61752143) :x: (Wrong answer on test 3)
+[#61752143](https://codeforces.com/contest/50/submission/61752143) :x:
