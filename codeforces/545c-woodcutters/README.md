@@ -11,4 +11,3 @@
 [#63642860](https://codeforces.com/contest/545/submission/63642860) :x:
 
 [#63641806](https://codeforces.com/contest/545/submission/63641806) :x:
-
