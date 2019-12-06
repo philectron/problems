@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CXX='g++'
-CXXFLAGS='-static -DONLINE_JUDGE -O2 -std=c++17'
+CXXFLAGS='-g -static -DONLINE_JUDGE -O2 -std=c++17'
 
 exe() {
   echo "$@"
@@ -10,7 +10,7 @@ exe() {
 
 compile() {
   for program in "$@"; do
-    exe ${CXX} ${CXXFLAGS} ${program}/*.cpp -o ${program}/${program}.exe
+    exe ${CXX} ${CXXFLAGS} -o ${program}/a.out ${program}/*.cpp
   done
 }
 
@@ -20,7 +20,7 @@ if [[ "$#" -eq 0 ]]; then
   done
 elif [[ "$#" -eq 1 ]] && [[ "$1" == 'clean' ]]; then
   for directory in */; do
-    exe rm -f ${directory%/}/${directory%/}.exe
+    exe rm -f ${directory%/}/a.out
   done
 else
   compile "${@:1}"
