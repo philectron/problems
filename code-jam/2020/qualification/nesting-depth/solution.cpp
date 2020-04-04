@@ -2,21 +2,36 @@
 
 using namespace std;
 
+string OpenParen(int n) {
+    string s(n, '(');
+    return s;
+}
+
+string CloseParen(int n) {
+    string s(n, ')');
+    return s;
+}
+
 void Solve(string s) {
     string sp;
-    for (int i = 0, l = s.length(); i < l;) {
-        if (s[i] == '1') {
-            sp += '(';
-            int j = i;
-            while (j < l && s[j] == '1') {
-                sp += s[j++];
-            }
-            i = j;
-            sp += ')';
-        } else {
+    int prevOpen = 0;
+    for (int i = 0, l = s.length(); i < l; i++) {
+        int si = s[i] - '0';
+        if (si > prevOpen) {
+            sp += OpenParen(si - prevOpen);
             sp += s[i];
-            i++;
+            prevOpen = si;
+        } else if (si == prevOpen) {
+            sp += s[i];
+        } else {
+            sp += CloseParen(prevOpen - si);
+            sp += s[i];
+            prevOpen = si;
         }
+    }
+
+    if (prevOpen > 0) {
+        sp += CloseParen(prevOpen);
     }
 
     cout << sp << endl;
