@@ -6,16 +6,12 @@ typedef struct Activity {
     int start;
     int end;
 
-    bool operator==(const Activity& rhs) const {
-        return start == rhs.start && end == rhs.end;
-    }
-
     bool OverlapsWith(const Activity& rhs) const {
         return !(rhs.start >= end || start >= rhs.end);
     }
 } Activity;
 
-bool Overlap(const unordered_set<Activity>& act, const Activity& a) {
+bool Overlap(const vector<Activity>& act, const Activity& a) {
     for (const Activity& x : act) {
         if (x.OverlapsWith(a)) {
             return true;
@@ -26,9 +22,9 @@ bool Overlap(const unordered_set<Activity>& act, const Activity& a) {
 
 void Solve(int n, const vector<Activity>& a) {
     string result = "C";
-    unordered_set<Activity> c, j;
+    vector<Activity> c, j;
 
-    c.insert(a[0]);
+    c.push_back(a[0]);
 
     for (int i = 1; i < n; i++) {
         bool overlappedC = Overlap(c, a[i]), overlappedJ = Overlap(j, a[i]);
@@ -37,10 +33,10 @@ void Solve(int n, const vector<Activity>& a) {
             return;
         } else if (overlappedC) {
             result += 'J';
-            j.insert(a[i]);
+            j.push_back(a[i]);
         } else {
             result += 'C';
-            c.insert(a[i]);
+            c.push_back(a[i]);
         }
     }
 
